@@ -1,0 +1,141 @@
+			<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.example</groupId>
+	<artifactId>example</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>lm-selenium-testng-001</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<org.selenium-version>2.53.1</org.selenium-version>
+		<org.fitnesse-version>20130531</org.fitnesse-version>
+		<jdk.version>1.8</jdk.version>
+		<org.springframework-version>3.2.1.RELEASE</org.springframework-version>
+		<resources.encoding>UTF-8</resources.encoding>
+		<sources.encoding>UTF-8</sources.encoding>
+	</properties>
+
+	<build>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+				<configuration>
+					<suiteXmlFiles>
+						<!-- TestNG suite XML files -->
+						<!-- <suiteXmlFile>target/test-classes/Members.xml</suiteXmlFile> -->
+						<!-- <suiteXmlFile>target/test-classes/Users.xml</suiteXmlFile> -->
+						<!-- <suiteXmlFile>target/test-classes/Programs.xml</suiteXmlFile> -->
+						<suiteXmlFile>target/test-classes/Smoke.xml</suiteXmlFile>
+						<!-- <suiteXmlFile>target/test-classes/Enums.xml</suiteXmlFile>
+						<suiteXmlFile>target/test-classes/Locations.xml</suiteXmlFile> -->
+						<!-- <suiteXmlFile>target/test-classes/Orgs.xml</suiteXmlFile> -->
+						<!-- <suiteXmlFile>target/test-classes/Products.xml</suiteXmlFile>
+						<suiteXmlFile>target/test-classes/PursePolicies.xml</suiteXmlFile>
+						<suiteXmlFile>target/test-classes/RewardPolicies.xml</suiteXmlFile>
+						<suiteXmlFile>target/test-classes/SecuritySetUp.xml</suiteXmlFile>
+						<suiteXmlFile>target/test-classes/TierPolicies.xml</suiteXmlFile>
+						<suiteXmlFile>target/test-classes/Segments.xml</suiteXmlFile>
+						<suiteXmlFile>target/test-classes/Partners.xml</suiteXmlFile>  -->
+							<!-- <suiteXmlFile>target/test-classes/Rules.xml</suiteXmlFile> 
+							<suiteXmlFile>target/test-classes/RulesFolder.xml</suiteXmlFile> -->
+						<!-- <suiteXmlFile>target/test-classes/MemberRewards.xml</suiteXmlFile> -->
+
+					</suiteXmlFiles>
+					<properties>
+						<!-- Setting ReportNG listeners -->
+						<property>
+							<name>listener</name>
+							<value>org.uncommons.reportng.HTMLReporter,
+								org.uncommons.reportng.JUnitXMLReporter,
+								report.realtime.listener.RealTimeTestResultListener,
+								selenium.framework.common.RetryListener
+							</value>
+						</property>
+					</properties>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<mainClass>selenium.framework.common.Emailer</mainClass>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.codeborne</groupId>
+			<artifactId>phantomjsdriver</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.uncommons</groupId>
+			<artifactId>reportng</artifactId>
+			<version>1.1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-server</artifactId>
+			<version>${org.selenium-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.8.5</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi-ooxml</artifactId>
+        <version>3.11-beta2</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/net.sourceforge.jexcelapi/jxl -->
+<dependency>
+    <groupId>net.sourceforge.jexcelapi</groupId>
+    <artifactId>jxl</artifactId>
+    <version>2.6</version>
+</dependency>
+
+	</dependencies>
+</project>
